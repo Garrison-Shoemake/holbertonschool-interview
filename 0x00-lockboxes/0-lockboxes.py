@@ -3,6 +3,7 @@
 
 
 def canUnlockAll(boxes):
+	""" Determines if all boxes can be unlocked or not """
 	keyring = [0]
 	if boxes is None or len(boxes) == 0:
 		return False
