@@ -7,17 +7,18 @@ def canUnlockAll(boxes):
 	if boxes is None or len(boxes) == 0:
 		return False
 
-	for key in keyring:
-		newkeys = boxes[key]
-		keyring = addkey(keyring, newkeys)
-
+	for keys in keyring:
+		for key in boxes[keys]:
+			if key not in keyring and key < len(boxes):
+				keyring.append(key)
+		
 	return len(keyring) == len(boxes)
 
-def addkey(keyring, newkeys):
-	for key in newkeys:
-		if key not in keyring:
-			keyring.append(key)
-			keyring.sort()
-		else:
-			pass
-	return keyring
+# def addkey(keyring, newkeys):
+# 	for key in newkeys:
+# 		if key not in keyring:
+# 			keyring.append(key)
+# 			keyring.sort()
+# 		else:
+# 			pass
+# 	return keyring
