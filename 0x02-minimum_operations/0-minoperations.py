@@ -11,14 +11,12 @@ def minOperations(n):
     i = 2
     """ """
 
-    
     if (n <= 0):
         """ if n is impossible return 0"""
 
         return 0
 
-    
-    while (i <= n ):
+    while (i <= n):
         """ while i less than or equal to n - mod i into n"""
 
         while (n % i == 0):
@@ -28,4 +26,3 @@ def minOperations(n):
         i += 1
 
     return total
-    
