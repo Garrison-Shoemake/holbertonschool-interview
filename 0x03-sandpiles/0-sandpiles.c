@@ -15,49 +15,45 @@ void sandpiles_sum(int grid1[3][3], int grid2[3][3])
 		for (y = 0; y < 3; y++)
 			grid1[x][y] += grid2[x][y];
 	
-	while(!stable(grid1))
-	{
-		topple(grid1);
-		stable(grid1);
-	}
+	topple(grid1);
 }
 
 
 /**
- * @brief 
+ * topple - topples all necessary cells to neighbours
+ * @grid: grid to topple and stabilize 
  * 
  */
 void topple(int grid[3][3])
 {
 	int x, y;
-	int subgrid[3][3];
 
-	for (x = 0; x < 3; x++)
+	while(!stable(grid))
 	{
-		for (y = 0; y < 3; y++)
+		printf("=\n");
+		print_grid(grid);
+		
+		for (x = 0; x < 3; x++)
 		{
-			subgrid[x][y] = grid[x][y];
-
-
-			/* the following is to topple the piles on to neighbours */			
-			if (subgrid[x][y] > 3)
+			for (y = 0; y < 3; y++)
 			{
-				grid[x][y] -= 4;
-				if (x+1 < 3)
-					grid[x+1][y]++;
-				if (x-1 >= 0)
-					grid[x-1][y]++;
-				if (y+1 < 3)
-					grid[x][y+1]++;
-				if (y-1 >= 0)
-					grid[x][y-1]++;
+				/* the following is to topple the piles on to neighbours */			
+				if (grid[x][y] > 3)
+				{
+					grid[x][y] -= 4;
+					if (x < 2)
+						grid[x+1][y]++;
+					if (x > 0)
+						grid[x-1][y]++;
+					if (y < 2)
+						grid[x][y+1]++;
+					if (y > 0)
+						grid[x][y-1]++;
+				}			
 			}
-								
 		}
 	}
 }
-
-
 
 /**
  * stable - boolean helper function for stability
@@ -70,8 +66,29 @@ bool stable(int grid[3][3])
 
 	for (x = 0; x < 3; x++)
 		for (y = 0; y < 3; y++)
-			if (grid[3][3] > 3)
+			if (grid[x][y] > 3)
 				return false;
 
 	return true;
+}
+
+/**
+ * print_grid - Print 3x3 grid
+ * @grid: 3x3 grid
+ *
+ */
+static void print_grid(int grid[3][3])
+{
+    int i, j;
+
+    for (i = 0; i < 3; i++)
+    {
+        for (j = 0; j < 3; j++)
+        {
+            if (j)
+                printf(" ");
+            printf("%d", grid[i][j]);
+        }
+        printf("\n");
+    }
 }
