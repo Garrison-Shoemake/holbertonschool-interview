@@ -1,0 +1,1 @@
+This is the README for the 0x04-linked_list_palindrome project
