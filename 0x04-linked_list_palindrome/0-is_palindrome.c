@@ -8,6 +8,10 @@ int is_palindrome(listint_t **head)
 {
     listint_t *node = *head;
 	listint_t *slow, *fast, *prev, *second_ll_start, *head2, *next, *start;     
+    
+    if (!head)
+        return (0);
+
     slow = fast = prev = node; 
     if ( node -> next == NULL) 
         return 1;          
