@@ -10,15 +10,13 @@ int is_palindrome(unsigned long n)
 	unsigned long rev = 0, remainder, original;
 
 	original = n;
+	/* edits n to reverse it through div and mod */
 	while (n != 0)
 	{
 		remainder = n % 10;
 		rev = rev * 10 + remainder;
 		n /= 10;
 	}
-	if (original == rev)
-		return (1);
-	else
-		return (0);
-
+	/* returns if the reversed number matches the original */
+	return (original == rev);
 }
