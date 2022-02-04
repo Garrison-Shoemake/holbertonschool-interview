@@ -24,7 +24,7 @@ int slide_line(int *line, size_t size, int direction)
 			{
 				/* parses and adds if consecutive match found */
 				if (line[j] == 0)
-					break;
+					continue;
 				else if (line[j] == line[i])
 				{
 					tmp[i] = line[i] * 2;
@@ -60,7 +60,7 @@ void collapse(int *list, size_t size)
 			for (j = i + 1; j < size; j++)
 			{
 				/* looks for next non 0 to replace */
-				if (list[j] > 0)
+				if (list[j] != 0)
 				{
 					tmp = list[j];
 					list[j] = list[i];
