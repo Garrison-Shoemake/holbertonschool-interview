@@ -1,0 +1,14 @@
+#ifndef SLIDE_LINE_H
+#define SLIDE_LINE_H
+#define SLIDE_LEFT 1
+#define SLIDE_RIGHT 2
+
+
+#include <stdlib.h>
+#include <stdio.h>
+
+int slide_line(int *line, size_t size, int direction);
+void collapse(int *list, size_t size);
+void reversal(int *list, size_t size);
+
+#endif
