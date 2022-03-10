@@ -1,22 +1,26 @@
 #!/usr/bin/python3
-""" 
+"""
 walls is a list of non-negative integers
 Return: returns total amount of rain stored
 ends of list are not walls and do not store
 if list is empty return 0
 """
 
+
 def rain(walls):
-    """ 
+    """
     define sizes of left and right arrays
     also define water for use later
+    return 0 first for empty list check
     """
+
+    if (len(walls) == 0):
+        return 0
     size = len(walls)
     left = size * [0]
     right = size * [0]
     left[0] = walls[0]
     water = 0
-    
 
     """
     define left array and define highest wall from left to right
@@ -30,19 +34,18 @@ def rain(walls):
         else:
             left[index] = max_left
 
-    """ 
+    """
     do the same, define right comparison list except go from
-    right to left, which gives a different height in each 
+    right to left, which gives a different height in each
     elements position
     """
     max_right = walls[-1]
-    for index in range(size -1, -1, -1):
+    for index in range(size - 1, -1, -1):
         if(max_right < walls[index]):
             max_right = walls[index]
             right[index] = max_right
         else:
             right[index] = max_right
-
 
     """
     water is filled based on the difference between the minimum
