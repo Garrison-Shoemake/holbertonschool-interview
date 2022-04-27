@@ -16,8 +16,9 @@ def makeChange(coins, total):
     """ initaiting table for storing answers """
     table = [0 for i in range(total + 1)]
 
-    """ base case for 0 total """
-    table[0] = 0
+    """ base case for 0 or negative total """
+    if (total <= 0):
+        return 0
 
     """ initialize table values as infinite """
     for i in range(1, total + 1):
@@ -31,6 +32,7 @@ def makeChange(coins, total):
                 if (sub_res != sys.maxsize and sub_res + 1 < table[i]):
                     table[i] = sub_res + 1
 
+    """ if maxsize remains, total could not be reached """
     if table[total] == sys.maxsize:
         return -1
 
